@@ -1,3 +1,7 @@
+html, body{
+	background: darken(grey,35%) !important;
+}
+
 .flyout {
 	display:flex;
 	flex-direction: column;
@@ -7,54 +11,6 @@
 
 main{
 	padding-top: 4rem;
-}
-
-// Custom colors
-.agency-dark{
-	background-color: $agencyDark !important;
-	&.darken-1{
-		background-color: darken($agencyDark, 5%) !important;
-	}
-	&.darken-2{
-		background-color: darken($agencyDark, 10%) !important;
-	}
-	&.darken-3{
-		background-color: darken($agencyDark, 15%) !important;
-	}
-	&.lighten-1{
-		background-color: lighten($agencyDark, 10%) !important;
-	}
-	&.lighten-2{
-		background-color: lighten($agencyDark, 20%) !important;
-	}
-	&.lighten-3{
-		background-color: lighten($agencyDark, 30%) !important;
-	}
-}
-.agency-red{
-	background-color: $agencyRed !important;
-	&.darken-1{
-		background-color: darken($agencyRed, 10%) !important;
-	}
-	&.darken-2{
-		background-color: darken($agencyRed, 20%) !important;
-	}
-	&.darken-3{
-		background-color: darken($agencyRed, 30%) !important;
-	}
-	&.lighten-1{
-		background-color: lighten($agencyRed, 10%) !important;
-	}
-	&.lighten-2{
-		background-color: lighten($agencyRed, 20%) !important;
-	}
-	&.lighten-3{
-		background-color: lighten($agencyRed, 30%) !important;
-	}
-}
-
-.red-text{
-	color: $agencyRed !important;
 }
 
 /** 
