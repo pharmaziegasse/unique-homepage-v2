@@ -114,10 +114,18 @@ class Hero extends React.Component{
                                     <MDBMask overlay="black-light flex-center">
                                         <MDBContainer className="hero-content">
                                             <h1 
-                                            className="h1-reponsive text-uppercase font-weight-bold mb-0 pt-md-5 pt-5"
+                                            className="
+                                            h1-reponsive
+                                            text-uppercase
+                                            font-weight-bold
+                                            mb-0
+                                            pt-md-5
+                                            pt-5"
                                             >
                                             <strong dangerouslySetInnerHTML={
-                                                {__html: ReactHtmlParser(renderToString(<Text value={ slide.slideHead }/>))}
+                                                {__html: ReactHtmlParser(
+                                                    renderToString(<Text value={ slide.slideHead }/>)
+                                                    )}
                                                 }>
                                             </strong>
                                             </h1>
@@ -125,11 +133,17 @@ class Hero extends React.Component{
                                             className="my-5 white-text"
                                             >
                                             <strong dangerouslySetInnerHTML={
-                                                {__html: ReactHtmlParser(renderToString(<Text value={ slide.slideSubhead }/>))}
+                                                {__html: ReactHtmlParser(
+                                                    renderToString(<Text value={ slide.slideSubhead }/>)
+                                                    )}
                                                 }>
                                             </strong>
                                             </h3>
-                                            <ModalBtn handler={this._handleModalChange} size="LG" param={slide.slideButton} />
+                                            <ModalBtn
+                                            handler={this._handleModalChange}
+                                            size="LG"
+                                            param={slide.slideButton}
+                                            />
                                         </MDBContainer>
                                     </MDBMask>
                                     </MDBView>
