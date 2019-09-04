@@ -13,7 +13,7 @@ class Section extends React.Component{
         } : null;
     }
 
-    isDark = () => {
+    isDark = (background) => {
         let r = this._hexToRgb(background).r;
         let g = this._hexToRgb(background).g;
         let b = this._hexToRgb(background).b;
@@ -39,7 +39,7 @@ class Section extends React.Component{
         }
 
         return(
-            <section id={id} className={this.isDark()} style={sectionStyle}>
+            <section id={id} className={this.isDark(background)} style={sectionStyle}>
                 {children}
             </section>
         );

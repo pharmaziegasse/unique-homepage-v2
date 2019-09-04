@@ -2,12 +2,14 @@
 // Import all components to export them for easy access from parent components
 import DocsLink from './DocsLink';
 import MenuLink from './MenuLink';
-import SectionContainer from './SectionContainer';
+import Section from './Section';
+import ModalBtn from './ModalBtn';
 
 export {
     DocsLink,
     MenuLink,
-    SectionContainer,
+    Section,
+    ModalBtn,
 };
 
 /** 
