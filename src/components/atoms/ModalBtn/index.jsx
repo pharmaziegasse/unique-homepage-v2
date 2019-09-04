@@ -53,7 +53,7 @@ class ModalBtn extends React.Component {
         }
     }
 
-    //** Convert url to Modal */
+    // Convert url to Modal
     isModal = () => {
         if(this.exists()){
             if(this.props.param.btnlink === null || this.props.param.btnlink === undefined){
@@ -68,12 +68,13 @@ class ModalBtn extends React.Component {
         
     }
 
-    //** Check if button should be displayed */
+    // Check if button should be displayed
     exists = () =>{
         if(this.props.param === undefined || this.props.param === null){
             return false;
         } else {
-            if((this.props.param.buttonPage !== null && this.props.param.buttonPage !== undefined) || (this.props.param.btnlink !== null && this.props.param.btnlink !== undefined)){
+            if((this.props.param.buttonPage !== null && this.props.param.buttonPage !== undefined) || 
+            (this.props.param.btnlink !== null && this.props.param.btnlink !== undefined)){
                 return true;
             } else {
                 return false;
@@ -81,7 +82,7 @@ class ModalBtn extends React.Component {
         }
     }
 
-    //** Combine multiple values for className */
+    // Combine multiple values for className
     getClassProps = () => {
         let props = classnames(
             "btn",
@@ -102,7 +103,10 @@ class ModalBtn extends React.Component {
                 { this.exists() &&
                     <div>
                         {(this.isModal() === true && this.props.handler !== undefined) ? (
-                                <button onClick={() => this.props.handler(this.props.param.buttonPage.urlPath)} className={this.getClassProps()}>
+                                <button 
+                                onClick={() => this.props.handler(this.props.param.buttonPage.urlPath)}
+                                className={this.getClassProps()}
+                                >
                                     {this.props.param.buttonTitle}
                                 </button>
                             ) : (
@@ -119,7 +123,7 @@ class ModalBtn extends React.Component {
     
 }
 
-//** Define how a default button should look (without any additional information provided) */
+// Define how a default button should look (without any additional information provided)
 ModalBtn.defaultProps = {
     size: ButtonSize.DEFAULT,
     btnstyle: ButtonStyle.WHITE,
