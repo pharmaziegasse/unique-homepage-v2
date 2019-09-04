@@ -64,7 +64,12 @@ class Text extends React.Component{
     printText = () => {
         let text = this.props.value;
         if(text !== null && text !== undefined){
-            if(localStorage.getItem('f_n') && localStorage.getItem('f_l') && localStorage.getItem('f_e') && localStorage.getItem('f_p')){
+            if(
+                localStorage.getItem('f_n') && 
+                localStorage.getItem('f_l') && 
+                localStorage.getItem('f_e') && 
+                localStorage.getItem('f_p')
+            ){
                 let segment = this.getSegment(text);
                 if(segment){
                     text = this.getItem(segment);
