@@ -5,18 +5,29 @@ import React from 'react';
 //> MDB
 // "Material Design for Bootstrap" is a great UI design framework
 import {
-  MDBNavbar,
-  MDBNavbarBrand,
-  MDBNavbarNav,
-  MDBNavbarToggler,
-  MDBCollapse,
-  MDBNavItem,
-  MDBNavLink,
-  MDBContainer,
+    MDBNavbar,
+    MDBNavbarBrand,
+    MDBNavbarNav,
+    MDBNavbarToggler,
+    MDBCollapse,
+    MDBNavItem,
+    MDBContainer,
+    MDBSmoothScroll,
+    MDBBtn,
 } from 'mdbreact';
 
+//> CSS
+import './navbar.scss';
+
 // React Logo
-import { ReactComponent as Logo } from '../../../assets/logo.svg';
+import { ReactComponent as Logo } from '../../../assets/logo/logo.svg';
+
+//> Navbar Data
+const navItems = [
+    { to: "steps", text: "So funktioniert's", active: false, type: "text" },
+    { to: "features", text: "Warum PHARMAZIEGASSE<sup>®</sup>", active: false, type: "text" },
+    { to: "manifest", text: "Über uns", active: false, type: "text" },
+]
 
 class Navbar extends React.Component{
     state = {
@@ -45,11 +56,10 @@ class Navbar extends React.Component{
         const { collapseID } = this.state;
         return(
             <div>
-                <MDBNavbar color="agency-dark" dark expand="md" fixed="top" scrolling>
+                <MDBNavbar className="z-depth-0" dark expand="md" fixed="top" scrolling>
                 <MDBContainer>
                     <MDBNavbarBrand href="/" className="py-0 font-weight-bold">
-                    <Logo style={{ height: "2.5rem", width: "2.5rem" }} />
-                    <strong className="align-middle">MDB React Template</strong>
+                        <Logo />
                     </MDBNavbarBrand>
                     <MDBNavbarToggler
                     onClick={this.toggleCollapse("mainNavbarCollapse")}
@@ -59,22 +69,31 @@ class Navbar extends React.Component{
                     isOpen={this.state.collapseID}
                     navbar
                     >
-                    <MDBNavbarNav right>
+                    <MDBNavbarNav className="align-items-center" right>
+                        {navItems.map((item, i) => {
+                            return(
+                                <MDBNavItem key={i}>
+                                    <MDBSmoothScroll 
+                                    to={item.to}
+                                    onClick={this.closeCollapse("mainNavbarCollapse")}
+                                    >
+                                    <strong>{item.text}</strong>
+                                    </MDBSmoothScroll>
+                                </MDBNavItem>
+                            );
+                        })}
+                        {/*<SocialLinks items={sociallinks} />*/}
                         <MDBNavItem>
-                            <MDBNavLink
-                                exact
-                                to="/"
-                                onClick={this.closeCollapse("mainNavbarCollapse")}
-                            >
-                                <strong>Home</strong>
-                            </MDBNavLink>
+                            <MDBBtn color="white" rounded>
+                                Loslegen
+                            </MDBBtn>
                         </MDBNavItem>
                     </MDBNavbarNav>
                     </MDBCollapse>
                 </MDBContainer>
             </MDBNavbar>
             {collapseID && overlay}
-          </div>
+            </div>
         );
     }
 }

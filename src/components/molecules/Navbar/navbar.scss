@@ -1,0 +1,24 @@
+.navbar{
+    padding: 1.5rem 0 1.5rem 0 !important;
+    color: white !important;
+    background-color: rgba(0,0,0,0.4) !important;
+    
+    &:not(.top-nav-collapse) {
+        background: transparent !important;
+    }
+    @media (max-width: 991px) {
+        &:not(.top-nav-collapse) {
+            background: rgba(0,0,0,0.4) !important;
+        }
+    }
+
+    svg{
+        height: 1.3rem;
+        fill: white;
+    }
+}
+
+/** 
+ * SPDX-License-Identifier: (EUPL-1.2)
+ * Copyright © 2019 Werbeagentur Christian Aichner
+ */

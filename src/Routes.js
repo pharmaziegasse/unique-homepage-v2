@@ -9,14 +9,30 @@ import { Route, Switch } from 'react-router-dom';
  * HomePage: A basic template page
  */
 import {
-  HomePage
+  HomePage,
+  PrivacyPage,
+  AboutPage,
 } from './components/pages';
 
 class Routes extends React.Component {
   render() {
     return (
       <Switch>
-        <Route exact path='/' component={HomePage} />
+        <Route
+        exact
+        path='/'
+        component={(props) => <HomePage globalState={this.props.globalState} {...props} />}
+        />
+        <Route
+        exact
+        path='/privacy'
+        component={(props) => <PrivacyPage globalState={this.props.globalState} {...props} />}
+        />
+        <Route
+        exact
+        path='/about'
+        component={(props) => <AboutPage globalState={this.props.globalState} {...props} />}
+        />
           
         <Route
           render={function () {

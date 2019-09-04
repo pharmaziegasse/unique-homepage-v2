@@ -1,15 +1,9 @@
 //> Components
 // Import all components to export them for easy access from parent components
-import DocsLink from './DocsLink';
-import MenuLink from './MenuLink';
-import Section from './Section';
-import ModalBtn from './ModalBtn';
+import RegisterPage from './RegisterPage';
 
 export {
-    DocsLink,
-    MenuLink,
-    Section,
-    ModalBtn,
+    RegisterPage,
 };
 
 /** 
