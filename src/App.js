@@ -126,17 +126,16 @@ class App extends React.Component {
     // Check if the token is still valid
     if(currentTS > exp){
       // Token has expired
-      console.log("Token has expired.");
-      this._loginUser();
+      this._refeshToken(token);
     } else {
       // Only if anything has changed, update the data
       this._setLogged(token);
     }
   }
 
-  _refeshToken = () => {
+  _refeshToken = (token) => {
     this.props.refresh({
-      variables: { "token": localStorage.getItem('fprint') }
+      variables: { "token": token }
     })
     .then(({data}) => {
         if(data !== undefined){
