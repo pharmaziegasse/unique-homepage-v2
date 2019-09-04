@@ -18,9 +18,21 @@ class Routes extends React.Component {
   render() {
     return (
       <Switch>
-        <Route exact path='/' component={HomePage} />
-        <Route exact path='/privacy' component={PrivacyPage} />
-        <Route exact path='/about' component={AboutPage} />
+        <Route
+        exact
+        path='/'
+        component={(props) => <HomePage globalState={this.props.globalState} {...props} />}
+        />
+        <Route
+        exact
+        path='/privacy'
+        component={(props) => <PrivacyPage globalState={this.props.globalState} {...props} />}
+        />
+        <Route
+        exact
+        path='/about'
+        component={(props) => <AboutPage globalState={this.props.globalState} {...props} />}
+        />
           
         <Route
           render={function () {
