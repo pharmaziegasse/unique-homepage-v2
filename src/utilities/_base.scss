@@ -9,8 +9,11 @@ html, body{
 	justify-content: space-between;
 }
 
-main{
-	padding-top: 4rem;
+.view{
+	height: 100vh;
+	position: relative;
+	overflow: hidden;
+	cursor: default;
 }
 
 /** 
