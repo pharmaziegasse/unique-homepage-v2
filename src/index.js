@@ -11,6 +11,13 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 //> Bootstrap
 import 'bootstrap-css-only/css/bootstrap.min.css';
 
+//> Connect to backend
+// Apollo
+import { ApolloClient } from "apollo-client";
+import { ApolloProvider } from 'react-apollo';
+import { HttpLink } from "apollo-link-http";
+import { InMemoryCache, IntrospectionFragmentMatcher } from "apollo-cache-inmemory";
+
 //> MDB
 // "Material Design for Bootstrap" is a great UI design framework
 import 'mdbreact/dist/css/mdb.css';
@@ -25,8 +32,43 @@ import App from './App';
 
 import registerServiceWorker from './registerServiceWorker';
 
+// Base url
+export const APIHost = 'https://pharmaziegasse.at';
+
+// Cache setup
+const fragmentMatcher = new IntrospectionFragmentMatcher({
+introspectionQueryResultData: {
+    __schema: {
+    types: [], // no types provided - works like a charm.ing
+    },
+},
+});
+const cache = new InMemoryCache({ fragmentMatcher });
+
+// Create api url from base url
+const APILink = APIHost+"/api/graphiql";
+
+const LINK:HttpLink = new HttpLink({
+uri: APILink,
+headers: {
+    authorization:
+    localStorage.getItem('fingerprint')
+}
+});
+
+// Apollo Client setup
+const client = new ApolloClient({
+cache,
+link: LINK,
+});
+
 // Render the root component to <div id="root"></div>
-ReactDOM.render( <App /> , document.getElementById('root'));
+ReactDOM.render( 
+    <ApolloProvider client={client}>
+        <App />
+    </ApolloProvider>,
+    document.getElementById('root')
+);
 
 registerServiceWorker();
 
