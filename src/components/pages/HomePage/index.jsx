@@ -15,6 +15,7 @@ import { GET_PAGES } from './query.js';
 import {
   Hero,
   Features,
+  Steps,
 } from '../../organisms/sections';
 
 //> Images
@@ -39,7 +40,8 @@ class HomePage extends React.Component {
     if(globalState.loaded){
       return (
         <Hero handler={this._handleModalChange} globalState={globalState} />,
-        <Features handler={this._handleModalChange} globalState={globalState} />
+        <Features handler={this._handleModalChange} globalState={globalState} />,
+        <Steps handler={this._handleModalChange} globalState={globalState}/>
       );
     } else {
       return null;

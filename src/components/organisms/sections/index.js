@@ -2,10 +2,12 @@
 // Import all components to export them for easy access from parent components
 import Hero from './Hero';
 import Features from './Features';
+import Steps from './Steps';
 
 export {
     Hero,
     Features,
+    Steps,
 };
 
 /** 
