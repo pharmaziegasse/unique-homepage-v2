@@ -6,6 +6,8 @@ export const GET_PAGES = gql`
     query pages($token: String!) {
         page: root(token: $token) {
             rootPage{
+            __typename
+            id
             title
             uniquepage{
                 __typename
