@@ -50,13 +50,15 @@ const LOGIN_USER = gql`
 `;
 
 class App extends React.Component {
-
-  state = {
-    token: "",
-    loaded: false,
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+      token: "",
+      loaded: false,
+    }
   }
-
-
+  
   componentDidMount = () => {
     if(localStorage.getItem('fprint') !== null){
       try {
@@ -153,7 +155,11 @@ class App extends React.Component {
         <div className="flyout">
           <Navbar />
           <main>
+          {this.state.loaded ? (
             <Routes globalState={this.state} />
+          ) : (
+            <p>Loading...</p>
+          )}
           </main>
           <Footer />
         </div>
