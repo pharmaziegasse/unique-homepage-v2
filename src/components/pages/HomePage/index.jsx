@@ -18,39 +18,98 @@ import {
   Steps,
 } from '../../organisms/sections';
 
+//> Backend Connection
+// Apollo
+import { 
+  withApollo
+} from "react-apollo";
+
 //> Images
 // To be added
 
 class HomePage extends React.Component {
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+      page: undefined,
+    }
+  }
 
-  state = {}
+  componentDidMount = () => {
+    this._fetchData(this.props.globalState.token);
+  }
 
   _handleModalChange = (modalId, action) => {
-      // Show modal
-      this.setState({
-        [modalId]: action === 'show' ? true : false
-      });
+    // Show modal
+    this.setState({
+      [modalId]: action === 'show' ? true : false
+    });
   }
+
+  _fetchData = (token) => {
+    this.props.client.query({
+      query: GET_PAGES,
+    variables: { "token": token }
+    }).then(({data}) => {
+      if(data.page){
+        this.setState({
+          page: data.page.rootPage.uniquepage
+        });
+      } else {
+        this.setState({
+          page: undefined
+        }, () => console.error("No page data available."));
+      }
+    })
+    .catch(error => {
+      console.error(error.message);
+    });
+  };
   
   render() {
     const { globalState } = this.props;
+    // Fetched page CMS data
+    const { page } = this.state;
 
-    console.log(this.state);
-
-    if(globalState.loaded){
-      return (
+    if(this.state.page){
+      /*return (
         <Hero handler={this._handleModalChange} globalState={globalState} />,
         <Features handler={this._handleModalChange} globalState={globalState} />,
         <Steps handler={this._handleModalChange} globalState={globalState}/>
+      );*/
+      return (
+        <>
+        <Hero 
+        handler={this._handleModalChange}
+        globalState={globalState}
+        />
+        {page.sections.map((section, i) => {
+          switch(section.__typename){
+            case 'Home_S_FeaturesBlock':
+              return(
+                <Features 
+                handler={this._handleModalChange}
+                globalState={globalState}
+                data={section}
+                />
+              );
+            default:
+              return null;
+          }
+        })}
+        </>
       );
     } else {
-      return null;
+      return (
+        <Hero handler={this._handleModalChange} globalState={globalState} />
+      );
     }
     
   }
 }
 
-export default HomePage;
+export default withApollo(HomePage);
 
 /** 
  * SPDX-License-Identifier: (EUPL-1.2)
