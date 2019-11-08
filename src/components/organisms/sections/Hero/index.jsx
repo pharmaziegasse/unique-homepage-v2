@@ -44,23 +44,27 @@ export const GET_HERO = gql`
     query pages($token: String!) {
         page: root(token: $token) {
             rootPage{
-            title
-            uniquepage{
-                __typename
-                headers{
-                    ... on HomeHero_SlideBlockListBlock{
-                        value{
-                            slideHead
-                            slideSubhead
-                            slideImage{
-                                urlLink
-                            }
-                            slideButton{
+                id
+                title
+                uniquepage{
+                    __typename
+                    id
+                    headers{
+                        ... on HomeHero_SlideBlockListBlock{
+                            value{
+                                __typename
+                                slideHead
+                                slideSubhead
+                                slideImage{
+                                    urlLink
+                                }
+                                slideButton{
+                                    id
                                     buttonTitle
                                     buttonLink
                                     buttonPage{
-                                    id
-                                    urlPath
+                                        id
+                                        urlPath
                                     }
                                 }
                             }
@@ -159,9 +163,7 @@ class Hero extends React.Component{
             return(
                 null
             );
-        }
-        
-        
+        }        
     }
 }
 
