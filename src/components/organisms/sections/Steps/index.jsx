@@ -50,8 +50,8 @@ class Steps extends React.Component{
                             }.bind(this)
                         }>
                             {this.state[key] && <img className="img-fluid w-100" 
-                                                      src={"https://pharmaziegasse.at"+this.state[key].urlLink} 
-                                                      alt={"step "+(key+1)} />}
+                            src={"https://pharmaziegasse.at"+this.state[key].urlLink} 
+                            alt={"step "+(key+1)} />}
                         </div>
                     </div>
                 )}
@@ -67,8 +67,8 @@ class Steps extends React.Component{
                 <p className="lead mt-3">STEP {i+1}</p>
                 <p className="lead">{ReactHtmlParser(renderToString(<Text value={ item.head }/>))}</p>
                 <p dangerouslySetInnerHTML={
-                  {__html: ReactHtmlParser(renderToString(<Text value={ item.text }/>))}
-                  }>
+                {__html: ReactHtmlParser(renderToString(<Text value={ item.text }/>))}
+                }>
                 </p>
             </div>
         )
@@ -83,8 +83,7 @@ class Steps extends React.Component{
         let rowClass = "row d-flex";
 
         if(!this.isOdd(i)){
-
-          rowClass += " flex-row-reverse";
+        rowClass += " flex-row-reverse";
         }
 
         return(
@@ -110,18 +109,18 @@ class Steps extends React.Component{
     }
 
     render(){
-      if(this.props.simple === true){
+    if(this.props.simple === true){
             return(
                 <div className="container py-5">
                     {this.props.showHead === true &&
                         <h2 className="font-weight-bold" dangerouslySetInnerHTML={
-                          {__html: ReactHtmlParser(renderToString(<Text value={ this.props.title }/>))}
+                        {__html: ReactHtmlParser(renderToString(<Text value={ this.props.title }/>))}
                         }>
                         </h2>
                     }
                     <h4 className="text-muted" dangerouslySetInnerHTML={
-                      {__html: ReactHtmlParser(renderToString(<Text value={ this.props.lead }/>))}
-                      }>
+                    {__html: ReactHtmlParser(renderToString(<Text value={ this.props.lead }/>))}
+                    }>
                     </h4>
                     <div className="row d-flex justify-content-center mt-5">
                         {this.props.items.map((item, index) => {
@@ -140,14 +139,14 @@ class Steps extends React.Component{
                 <div className="container py-5">
                     {this.props.showHead === true &&
                         <h2 className="font-weight-bold" dangerouslySetInnerHTML={
-                          {__html: ReactHtmlParser(renderToString(<Text value={ this.props.title }/>))}
+                        {__html: ReactHtmlParser(renderToString(<Text value={ this.props.title }/>))}
                         }>
                         </h2>
                     }
                     <h4 className="text-muted mb-5" dangerouslySetInnerHTML={
-                      {__html: ReactHtmlParser(renderToString(<Text value={ this.props.lead }/>))}
-                      }>
-                      </h4>
+                    {__html: ReactHtmlParser(renderToString(<Text value={ this.props.lead }/>))}
+                    }>
+                    </h4>
                     
                     {this.props.items.map((item, index) => {
                         return(
